@@ -13,6 +13,17 @@ class Servidor {
             respuesta.json(resp);
         })
 
+        this.routes.get('/distrito', async (solicitud, respuesta) => {
+            const resp = await pool.query('SELECT distinct(distrito) FROM colegios.unidades_educativas');
+            respuesta.json(resp);
+        })
+
+        this.routes.get('/unidad-educativa', async (solicitud, respuesta) => {
+            const resp = await pool.query('SELECT unidad_educativa FROM colegios.unidades_educativas');
+            respuesta.json(resp);
+        })
+
+
         this.routes.get('/inicio', (solicitud, respuesta) => {
             respuesta.send('hola desde node js');
         })
